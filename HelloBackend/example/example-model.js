@@ -1,14 +1,19 @@
 // Maybe this is just some "joi" schema or uses an ORM like bookshelf etc
 
-function findAll (callback) {
-    // Query DB for a page of customers
-    // Mocked out here as out of scope
-    setImmediate(function () {
-      callback(null, [
-        {id: 1, name: 'Jane Doe'},
-        {id: 2, name: 'John Doe'}
-      ])
-    })
-  }
+
+//Require Mongoose
+var mongoose = require('mongoose');
+
+//Define a schema
+var Schema = mongoose.Schema;
+
+var ExampleSchema = new Schema({
+  a_string: String,
+  an_int: Number
+});
+
+// Compile model from schema
+let SomeModel = mongoose.model('example', ExampleSchema );
+
   
-  exports.findAll = findAll
+ module.exports = SomeModel

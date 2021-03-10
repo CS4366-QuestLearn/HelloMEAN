@@ -1,19 +1,32 @@
-var ex = require('./example-model')
+var example = require('./example-model')
 var router = require('express').Router()
 
+
+
 function getExample (req, res) {
-  ex.findAll(function (error, examples) {
-   if (error) {
-     res.status(500).send(error)
-     return
-   }
-   res.json(examples)
- })
+  example.find((err, result) =>
+  {
+    if(err) {console.log(error)}
+    else { res.json(result)}
+
+  })
+
 }
 
 function createExample (req, res) {
-  // 201 indicates that an entry was successfully created
-  res.status(201).send()
+  let newEntry = new example({
+      a_string: "abcd",
+      an_int: 2
+    })
+    newEntry.save((err, result) => {
+      if (err) {console.log("oops")}
+      else 
+      {
+        res.status(201).send()
+        // just nice to have
+        console.log("entry saved!")
+      }
+    })
 }
 
 router.post('/example', createExample)
