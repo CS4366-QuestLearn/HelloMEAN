@@ -5,8 +5,8 @@ var mongoose = require('mongoose')
 
 
 console.log('server process starting')
-// REPLACE THE <password> HERE 
-mongoose.connect('mongodb+srv://exampleuser:<password>.qqu24.mongodb.net/test-db?retryWrites=true&w=majority')
+// REPLACE THE <PASSWORD> HERE 
+mongoose.connect('mongodb+srv://exampleuser:<PASSWORD>@cluster0.qqu24.mongodb.net/test-db?retryWrites=true&w=majority')
 
 // Note that there's not much logic in this file.
 // The server should be mostly "glue" code to set things up and
